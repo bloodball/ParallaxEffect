@@ -1,5 +1,23 @@
---!strict
--- Variables
+--[[
+local parallaxEffect = loadstring(game:HttpGet("https://raw.githubusercontent.com/RileyS07/ParallaxEffect/main/src/ParallaxEffect.lua"))()
+local exampleParallax = parallaxEffect.new(5)
+
+exampleParallax:AddLayer(
+    "http://www.roblox.com/asset/?id=7142912853", 0
+):AddLayer(
+    "http://www.roblox.com/asset/?id=7142924307"
+):AddLayer(
+    "http://www.roblox.com/asset/?id=7142931111"
+):AddLayer(
+    "http://www.roblox.com/asset/?id=7142938951"
+):AddLayer(
+    "http://www.roblox.com/asset/?id=7142942303"
+):Mount(workspace.ParallaxBackground.SurfaceGui)  -- A SurfaceGui in Workspace.
+
+game:GetService("RunService").RenderStepped:Connect(function(deltaTime)
+    exampleParallax:Update(deltaTime)
+end)
+]]
 local parallaxEffect = {}
 type layerInformation = {Layer: ImageLabel, LayerClone: ImageLabel, OverrideSpeed: number?}
 
